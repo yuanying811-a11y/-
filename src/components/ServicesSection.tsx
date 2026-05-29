@@ -19,26 +19,8 @@ const PROJECTS: Project[] = [
     category: "女士内衣",
     description: "High-end product layout and branding for apparel categories, optimized for Amazon marketplace.",
     image: "/ny-work.jpg",
-    detailImages: ["/ny-work.jpg", "/ny2-work.jpg", "/ny3-work.jpg", "/白色内衣.jpg", "/豹纹.jpg"],
+    detailImages: ["/ny-work.jpg", "/ny2-work.jpg", "/ny3-work.jpg", "/白色内衣.jpg", "/豹纹.jpg", "/拼图总.jpg"],
     tags: ["CTR Optimization", "Graphic Design"]
-  },
-  {
-    id: 1,
-    title: "Amazon A+ Page Strategy | 家具视觉",
-    category: "家具",
-    description: "Multi-language A+ page design for premium furniture and home products, focusing on feature highlighting and user experience flow.",
-    image: "/拼图4.jpg",
-    detailImages: ["/拼图4.jpg", "/拼图5.jpg", "/拼图3.jpg", "/拼图1.jpg", "/拼图2.jpg"],
-    tags: ["Listing Optimization", "UX Design"]
-  },
-  {
-    id: 5,
-    title: "Leather Handbags | 包包视觉",
-    category: "包包",
-    description: "Dynamic product display and graphic design for fashion accessory categories.",
-    image: "/包包1.jpg",
-    detailImages: ["/包包1.jpg", "/包包2.jpg", "/包包3.jpg", "/包包4.jpg"],
-    tags: ["Graphic Design", "Brand Identity"]
   },
   {
     id: 2,
@@ -50,6 +32,30 @@ const PROJECTS: Project[] = [
     tags: ["Photography", "Retouching"]
   },
   {
+    id: 6,
+    title: "Other Apparel Visuals | 其他服饰视觉",
+    category: "其他服饰",
+    description: "Multi-channel graphic styling, commercial catalog layouts, and cohesive brand visual design for apparel collections.",
+    image: "/其他衣服2.jpg",
+    detailImages: [
+      "/其他衣服2.jpg",
+      "/拼图哈衣.jpg",
+      "/其他衣服.jpg",
+      "/圣诞毛衣.jpg",
+      "/围脖.jpg"
+    ],
+    tags: ["Brand Visuals", "Layout Design"]
+  },
+  {
+    id: 1,
+    title: "Amazon A+ Page Strategy | 家具视觉",
+    category: "家具",
+    description: "Multi-language A+ page design for premium furniture and home products, focusing on feature highlighting and user experience flow.",
+    image: "/拼图4.jpg",
+    detailImages: ["/拼图4.jpg", "/拼图5.jpg", "/拼图3.jpg", "/拼图1.jpg", "/拼图2.jpg"],
+    tags: ["Listing Optimization", "UX Design"]
+  },
+  {
     id: 4,
     title: "Pattern & Cultural Design | 纹样文创设计",
     category: "纹样文创",
@@ -57,10 +63,19 @@ const PROJECTS: Project[] = [
     image: "/作品封面.jpg",
     detailImages: ["/作品封面.jpg", "/插画展板1.jpg", "/插画展板2.jpg"],
     tags: ["Pattern Design", "Cultural Creative"]
+  },
+  {
+    id: 5,
+    title: "Leather Handbags | 包包视觉",
+    category: "包包",
+    description: "Dynamic product display and graphic design for fashion accessory categories.",
+    image: "/包包1.jpg",
+    detailImages: ["/包包1.jpg", "/包包2.jpg", "/包包3.jpg", "/包包4.jpg"],
+    tags: ["Graphic Design", "Brand Identity"]
   }
 ];
 
-const CATEGORIES = ["All", "女士内衣", "家具", "纹样文创", "包包", "脏衣车"];
+const CATEGORIES = ["All", "女士内衣", "家具", "纹样文创", "包包", "脏衣车", "其他服饰"];
 
 export default function ServicesSection() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -128,15 +143,16 @@ export default function ServicesSection() {
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredProjects.map((project) => {
-            const isWide = project.category === "女士内衣" && activeCategory === "All";
+            const colSpanClass = "col-span-1";
+            const aspectClass = "aspect-[4/5]";
             
             return (
               <div
                 key={project.id}
-                className={`group relative cursor-pointer ${isWide ? 'lg:col-span-2' : ''}`}
+                className={`group relative cursor-pointer ${colSpanClass}`}
                 onClick={() => setSelectedProject(project)}
               >
-                <div className={`liquid-glass rounded-3xl overflow-hidden border border-white/5 relative ${isWide ? 'aspect-[16/9]' : 'aspect-[4/5]'}`}>
+                <div className={`liquid-glass rounded-3xl overflow-hidden border border-white/5 relative ${aspectClass}`}>
                   <img 
                     src={project.image} 
                     alt={project.title}
